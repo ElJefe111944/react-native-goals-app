@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { Button, StyleSheet, Text, TextInput, View, ScrollView, FlatList } from 'react-native';
 import * as Crypto from 'expo-crypto';
+import GoalItem from './components/GoalItem';
 
 export default function App() {
 
@@ -36,9 +37,7 @@ export default function App() {
       <FlatList 
         data={goalsList}
         renderItem={({item}) => (
-          <View style={styles.goalItem}>
-            <Text style={styles.goalItem}>{item.text}</Text>
-          </View>
+            <GoalItem text={item.text} />
         )}
         keyExtractor={(item) => item.key}
       />
@@ -72,14 +71,4 @@ const styles = StyleSheet.create({
   goalsContainer: {
     flex: 5,
   },
-  goalItem: {
-    margin: 8,
-    padding: 8,
-    borderRadius: 6,
-    backgroundColor: "#e6e6e6",
-  },
-  goalItemText: {
-    color: "black",
-    textTransform: "capitalize",
-  }
 });
