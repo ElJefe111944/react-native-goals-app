@@ -1,8 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { Button, StyleSheet, Text, TextInput, View, ScrollView, FlatList } from 'react-native';
+import * as Crypto from 'expo-crypto';
 
 export default function App() {
+
+  const UUID = Crypto.randomUUID();
 
   const [currentGoal, setCurrentGoal] = useState<string>('');
   const [goalsList, setGoalsList] = useState<{ text: string; key: string }[]>([]); // array of objects 
@@ -18,7 +21,7 @@ export default function App() {
     }
     
     setGoalsList((prevState) => [...prevState, 
-      {text: currentGoal, key: Math.random.toString()},
+      {text: currentGoal, key: UUID},
     ]);
     setCurrentGoal('')    
   };
