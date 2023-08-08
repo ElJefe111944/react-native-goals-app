@@ -1,11 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, View, ScrollView } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View, ScrollView, FlatList } from 'react-native';
 
 export default function App() {
 
   const [currentGoal, setCurrentGoal] = useState<string>('');
-  const [goalsList, setGoalsList] = useState<string[]>([]);
+  const [goalsList, setGoalsList] = useState<{ text: string; key: string }[]>([]); // array of objects 
 
   const inputHandler = (item: string) => {
     setCurrentGoal(item);
@@ -17,7 +17,9 @@ export default function App() {
       return;
     }
     
-    setGoalsList((prevState) => [...prevState, currentGoal]);
+    setGoalsList((prevState) => [...prevState, 
+      {text: currentGoal, key: Math.random.toString()},
+    ]);
     setCurrentGoal('')    
   };
 
@@ -28,13 +30,15 @@ export default function App() {
         <Button title='Add Goal' onPress={addGoalHandler} />
       </View>
       <View style={styles.goalsContainer}>
-      <ScrollView>
-        {goalsList.map((item,index) => (
-          <View style={styles.goalItem} key={index}>
-            <Text style={styles.goalItemText}>{item}</Text>
+      <FlatList 
+        data={goalsList}
+        renderItem={({item}) => (
+          <View style={styles.goalItem}>
+            <Text style={styles.goalItem}>{item.text}</Text>
           </View>
-        ))}
-      </ScrollView>
+        )}
+        keyExtractor={(item) => item.key}
+      />
       </View>
     </View>
   );
