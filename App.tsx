@@ -1,6 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, View, ScrollView, FlatList } from 'react-native';
+import {  StyleSheet, View, FlatList } from 'react-native';
 import * as Crypto from 'expo-crypto';
 import GoalItem from './components/GoalItem';
 import GoalInput from './components/GoalInput';
