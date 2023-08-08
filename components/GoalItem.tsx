@@ -18,7 +18,8 @@ const styles = StyleSheet.create({
     padding: 8,
     margin: 8,
     borderRadius: 6,
-    backgroundColor: "#565555",
+    backgroundColor: "#404040",
+    borderColor: '#404040',
   },
   goalText: {
     fontSize: 16,
