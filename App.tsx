@@ -3,36 +3,26 @@ import { useState } from 'react';
 import { Button, StyleSheet, Text, TextInput, View, ScrollView, FlatList } from 'react-native';
 import * as Crypto from 'expo-crypto';
 import GoalItem from './components/GoalItem';
+import GoalInput from './components/GoalInput';
 
 export default function App() {
 
   const UUID = Crypto.randomUUID();
 
-  const [currentGoal, setCurrentGoal] = useState<string>('');
+
   const [goalsList, setGoalsList] = useState<{ text: string; key: string }[]>([]); // array of objects 
 
-  const inputHandler = (item: string) => {
-    setCurrentGoal(item);
-  };
 
-  const addGoalHandler = () => {
-    // do not add empty inputs
-    if(currentGoal.trim() === ''){
-      return;
-    }
+  const addGoalHandler = (goalText: string) => {
     
     setGoalsList((prevState) => [...prevState, 
-      {text: currentGoal, key: UUID},
+      {text: goalText, key: UUID},
     ]);
-    setCurrentGoal('')    
   };
 
   return (
     <View style={styles.appContainer}>
-      <View style={styles.inputContainer}>
-        <TextInput onChangeText={inputHandler} value={currentGoal} style={styles.textInput} placeholder='Your next goal' />
-        <Button title='Add Goal' onPress={addGoalHandler} />
-      </View>
+      <GoalInput onAddGoal={addGoalHandler} />
       <View style={styles.goalsContainer}>
       <FlatList 
         data={goalsList}
