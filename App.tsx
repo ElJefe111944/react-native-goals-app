@@ -9,18 +9,20 @@ export default function App() {
   const UUID = Crypto.randomUUID();
 
 
-  const [goalsList, setGoalsList] = useState<{ text: string; key: string }[]>([]); // array of objects 
+  const [goalsList, setGoalsList] = useState<{ text: string; id: string, key: string }[]>([]); // array of objects 
 
 
   const addGoalHandler = (goalText: string) => {
     
     setGoalsList((prevState) => [...prevState, 
-      {text: goalText, key: UUID},
+      {text: goalText, id: UUID, key: UUID},
     ]);
   };
 
-  const deleteGoalHandler = () => {
-    console.log('Delete');
+  const deleteGoalHandler = (key: string) => {
+    setGoalsList((prevState) => {
+      return prevState.filter((item) => item.id !== key );
+    });
   };
 
   return (
@@ -30,7 +32,7 @@ export default function App() {
       <FlatList 
         data={goalsList}
         renderItem={({item}) => (
-            <GoalItem text={item.text} deleteGoalHandler={deleteGoalHandler} />
+            <GoalItem text={item.text} deleteGoalHandler={() => deleteGoalHandler(item.id)} />
         )}
         keyExtractor={(item) => item.key}
       />
