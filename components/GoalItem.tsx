@@ -1,15 +1,18 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 interface GoalItemProps {
   text: string;
+  deleteGoalHandler: () => void 
 }
 
-const GoalItem: React.FC<GoalItemProps> = ({ text }) => {
+const GoalItem: React.FC<GoalItemProps> = ({ text, deleteGoalHandler }) => {
   return (
-    <View style={styles.goalItem}>
-      <Text style={styles.goalText}>{text}</Text>
-    </View>
+    <Pressable onPress={deleteGoalHandler}>
+      <View style={styles.goalItem}>
+        <Text style={styles.goalText}>{text}</Text>
+      </View>
+    </Pressable>
   );
 };
 
