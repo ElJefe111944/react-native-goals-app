@@ -27,7 +27,7 @@ export default function App() {
 
   return (
     <View style={styles.appContainer}>
-      <Button title='Add A Goal' onPress={() => setModalVisible(!modalVisible)} />
+      <Button title='Open' onPress={() => setModalVisible(!modalVisible)} />
       <GoalInput onAddGoal={addGoalHandler} modalVisible={modalVisible} setModalVisible={setModalVisible} />
       <View style={styles.goalsContainer}>
         <FlatList

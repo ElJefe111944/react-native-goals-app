@@ -37,75 +37,49 @@ const GoalInput: React.FC<GoalInputProps> = ({ onAddGoal, modalVisible, setModal
             }}>
             <View style={styles.inputContainer}>
                 <TextInput onChangeText={inputHandler} value={currentGoal} style={styles.textInput} placeholder='Your next goal' />
-                <Button title='Add Goal' onPress={addGoalHandler} />
-                <Pressable
-                    style={[styles.button, styles.buttonClose]}
-                    onPress={() => setModalVisible(!modalVisible)}>
-                    <Text style={styles.textStyle}>Hide Modal</Text>
-                </Pressable>
+                <View style={styles.buttonContainer}>
+                    <View style={styles.button}>
+                        <Button title='Add Goal' onPress={addGoalHandler} />
+                    </View>
+                    <View style={styles.button}>
+                        <Button title='Cancel' onPress={() => setModalVisible(!modalVisible)} />
+                    </View>
+                </View>
             </View>
         </Modal>
     )
 }
 
 const styles = StyleSheet.create({
-    centeredView: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 22,
-    },
-    modalView: {
-        margin: 20,
-        backgroundColor: 'white',
-        borderRadius: 20,
-        padding: 35,
-        alignItems: 'center',
-        shadowColor: '#000',
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 4,
-        elevation: 5,
-    },
     inputContainer: {
         flex: 1,
-        flexDirection: "row",
-        justifyContent: "space-between",
+        justifyContent: "center",
         gap: 8,
         alignItems: "center",
         marginBottom: 24,
         borderBottomWidth: 1,
         borderBottomColor: '#cccccc',
+        padding: 16,
     },
     textInput: {
         borderWidth: 1,
         borderColor: '#cccccc',
-        width: "70%",
+        width: "100%",
         padding: 8,
     },
-    button: {
-        borderRadius: 20,
-        padding: 10,
-        elevation: 2,
+    buttonContainer: {
+        flexDirection: "row",
+        marginTop: 16,
     },
-    buttonOpen: {
-        backgroundColor: '#F194FF',
-    },
-    buttonClose: {
-        backgroundColor: '#2196F3',
-    },
-    textStyle: {
+     textStyle: {
         color: 'white',
         fontWeight: 'bold',
         textAlign: 'center',
     },
-    modalText: {
-        marginBottom: 15,
-        textAlign: 'center',
-    },
+    button: {
+        width: 100,
+        marginHorizontal: 8,
+    }
 });
 
 
