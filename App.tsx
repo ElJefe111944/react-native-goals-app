@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, View, FlatList, Pressable, Text, Button } from 'react-native';
+import { StyleSheet, View, FlatList, Modal , Button, SafeAreaView } from 'react-native';
 import * as Crypto from 'expo-crypto';
 import GoalItem from './components/GoalItem';
 import GoalInput from './components/GoalInput';
@@ -17,6 +17,7 @@ export default function App() {
     setGoalsList((prevState) => [...prevState,
     { text: goalText, key: UUID },
     ]);
+    setModalVisible(false);
   };
 
   const deleteGoalHandler = (key: string) => {
@@ -27,7 +28,19 @@ export default function App() {
 
   return (
     <View style={styles.appContainer}>
-      <Button title='Open' onPress={() => setModalVisible(!modalVisible)} />
+      <View>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={!modalVisible}
+          onRequestClose={() => {
+            setModalVisible(modalVisible);
+          }}>
+          <View style={styles.modalOpenBtn}>
+            <Button title='Open' onPress={() => setModalVisible(!modalVisible)} />
+          </View>
+        </Modal>
+      </View>
       <GoalInput onAddGoal={addGoalHandler} modalVisible={modalVisible} setModalVisible={setModalVisible} />
       <View style={styles.goalsContainer}>
         <FlatList
@@ -47,6 +60,7 @@ const styles = StyleSheet.create({
     padding: 60,
     paddingHorizontal: 16,
     flex: 1,
+    marginTop: 0,
   },
   inputContainer: {
     flex: 1,
@@ -66,5 +80,10 @@ const styles = StyleSheet.create({
   },
   goalsContainer: {
     flex: 5,
+    marginTop: 25,
+    paddingTop: 10,
   },
+  modalOpenBtn: {
+    marginTop: 25,
+  }
 });
