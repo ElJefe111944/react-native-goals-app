@@ -44,7 +44,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   appContainer: {
-    padding: 50,
+    padding: 60,
     paddingHorizontal: 16,
     flex: 1,
   },
