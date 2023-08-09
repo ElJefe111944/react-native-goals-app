@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import {  StyleSheet, View, FlatList } from 'react-native';
+import { StyleSheet, View, FlatList, Pressable, Text, Button } from 'react-native';
 import * as Crypto from 'expo-crypto';
 import GoalItem from './components/GoalItem';
 import GoalInput from './components/GoalInput';
@@ -10,32 +10,33 @@ export default function App() {
 
 
   const [goalsList, setGoalsList] = useState<{ text: string; key: string; }[]>([]); // array of objects 
-
+  const [modalVisible, setModalVisible] = useState<boolean>(false);
 
   const addGoalHandler = (goalText: string) => {
-    
-    setGoalsList((prevState) => [...prevState, 
-      {text: goalText, key: UUID},
+
+    setGoalsList((prevState) => [...prevState,
+    { text: goalText, key: UUID },
     ]);
   };
 
   const deleteGoalHandler = (key: string) => {
     setGoalsList((prevState) => {
-      return prevState.filter((item) => item.key !== key );
+      return prevState.filter((item) => item.key !== key);
     });
   };
 
   return (
     <View style={styles.appContainer}>
-      <GoalInput onAddGoal={addGoalHandler} />
+      <Button title='Add A Goal' onPress={() => setModalVisible(!modalVisible)} />
+      <GoalInput onAddGoal={addGoalHandler} modalVisible={modalVisible} setModalVisible={setModalVisible} />
       <View style={styles.goalsContainer}>
-      <FlatList 
-        data={goalsList}
-        renderItem={({item}) => (
+        <FlatList
+          data={goalsList}
+          renderItem={({ item }) => (
             <GoalItem text={item.text} deleteGoalHandler={() => deleteGoalHandler(item.key)} />
-        )}
-        keyExtractor={(item) => item.key}
-      />
+          )}
+          keyExtractor={(item) => item.key}
+        />
       </View>
     </View>
   );
