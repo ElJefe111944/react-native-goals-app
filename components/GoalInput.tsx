@@ -20,10 +20,10 @@ const GoalInput: React.FC<GoalInputProps> = ({ onAddGoal }) => {
         if (currentGoal.trim() === '') {
             return;
         }
+        // addGoalHandler(goalText: string) 
         onAddGoal(currentGoal);
-        setCurrentGoal('')
+        setCurrentGoal('');
     };
-
 
     return (
         <View style={styles.inputContainer}>
