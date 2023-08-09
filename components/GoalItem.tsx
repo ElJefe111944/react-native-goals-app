@@ -8,26 +8,29 @@ interface GoalItemProps {
 
 const GoalItem: React.FC<GoalItemProps> = ({ text, deleteGoalHandler }) => {
   return (
-    <Pressable onPress={deleteGoalHandler}>
       <View style={styles.goalItem}>
+        <Pressable onPress={deleteGoalHandler} android_ripple={{ color: "#003a9d69" }} style={({ pressed }) => pressed && styles.pressedItem}>
         <Text style={styles.goalText}>{text}</Text>
+        </Pressable>
       </View>
-    </Pressable>
   );
 };
 
 const styles = StyleSheet.create({
   goalItem: {
-    padding: 8,
     margin: 8,
     borderRadius: 6,
-    backgroundColor: "#404040",
+    backgroundColor: "#0b5eed",
     borderColor: '#404040',
   },
   goalText: {
     fontSize: 16,
     textTransform: "capitalize",
     color: 'white',
+    padding: 8,
+  },
+  pressedItem: {
+    backgroundColor: '#003a9d69',
   },
 });
 
