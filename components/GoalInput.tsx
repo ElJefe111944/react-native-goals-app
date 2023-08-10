@@ -1,4 +1,4 @@
-import { StyleSheet, TextInput, View, Button, Modal, Pressable, Text } from 'react-native';
+import { StyleSheet, TextInput, View, Button, Modal, Image } from 'react-native';
 import { useState } from 'react';
 
 interface GoalInputProps {
@@ -36,6 +36,7 @@ const GoalInput: React.FC<GoalInputProps> = ({ onAddGoal, modalVisible, setModal
                 setModalVisible(!modalVisible);
             }}>
             <View style={styles.inputContainer}>
+                <Image source={require('./../assets/images/goal.png')} />
                 <TextInput onChangeText={inputHandler} value={currentGoal} style={styles.textInput} placeholder='Your next goal' />
                 <View style={styles.buttonContainer}>
                     <View style={styles.button}>
