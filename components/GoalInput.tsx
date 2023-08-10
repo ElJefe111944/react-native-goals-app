@@ -40,10 +40,10 @@ const GoalInput: React.FC<GoalInputProps> = ({ onAddGoal, modalVisible, setModal
                 <TextInput onChangeText={inputHandler} value={currentGoal} style={styles.textInput} placeholder='Your next goal' />
                 <View style={styles.buttonContainer}>
                     <View style={styles.button}>
-                        <Button title='Add Goal' onPress={addGoalHandler} />
+                        <Button title='Cancel' onPress={() => setModalVisible(!modalVisible)} color='#870101' />
                     </View>
                     <View style={styles.button}>
-                        <Button title='Cancel' onPress={() => setModalVisible(!modalVisible)} />
+                        <Button title='Add Goal' onPress={addGoalHandler} color='#000000' />
                     </View>
                 </View>
             </View>
@@ -57,11 +57,8 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         gap: 8,
         alignItems: "center",
-        marginBottom: 24,
-        borderBottomWidth: 1,
-        borderBottomColor: '#cccccc',
         padding: 16,
-        backgroundColor: "#8a7dab"
+        backgroundColor: "#98aaef",
     },
     image: {
         width: 100,
@@ -70,9 +67,12 @@ const styles = StyleSheet.create({
     },
     textInput: {
         borderWidth: 1,
-        borderColor: '#cccccc',
+        borderColor: '#dbdbdb',
+        backgroundColor: '#dbdbdb',
+        borderRadius: 6,
         width: "100%",
-        padding: 8,
+        padding: 16,
+        color: '#000',
     },
     buttonContainer: {
         flexDirection: "row",

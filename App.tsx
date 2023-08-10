@@ -27,12 +27,10 @@ export default function App() {
   };
 
   return (
-    <View style={styles.appContainer}>
- 
+    <View style={styles.appContainer}> 
         <View>
-          <Button title='Open' onPress={() => setModalVisible(!modalVisible)} />
+          <Button title='Open' onPress={() => setModalVisible(!modalVisible)} color='#000000' />
         </View>
-
       <GoalInput onAddGoal={addGoalHandler} modalVisible={modalVisible} setModalVisible={setModalVisible} />
       <View style={styles.goalsContainer}>
         <FlatList
@@ -52,7 +50,6 @@ const styles = StyleSheet.create({
     padding: 60,
     paddingHorizontal: 16,
     flex: 1,
-    marginTop: 0,
   },
   inputContainer: {
     flex: 1,
