@@ -36,7 +36,7 @@ const GoalInput: React.FC<GoalInputProps> = ({ onAddGoal, modalVisible, setModal
                 setModalVisible(!modalVisible);
             }}>
             <View style={styles.inputContainer}>
-                <Image source={require('./../assets/images/goal.png')} />
+                <Image style={styles.image} source={require('./../assets/images/goal.png')} />
                 <TextInput onChangeText={inputHandler} value={currentGoal} style={styles.textInput} placeholder='Your next goal' />
                 <View style={styles.buttonContainer}>
                     <View style={styles.button}>
@@ -61,6 +61,12 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: '#cccccc',
         padding: 16,
+        backgroundColor: "#8a7dab"
+    },
+    image: {
+        width: 100,
+        height: 100,
+        margin: 20,
     },
     textInput: {
         borderWidth: 1,

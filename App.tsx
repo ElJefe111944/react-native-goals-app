@@ -28,11 +28,11 @@ export default function App() {
 
   return (
     <View style={styles.appContainer}>
-      {!modalVisible && (
+ 
         <View>
           <Button title='Open' onPress={() => setModalVisible(!modalVisible)} />
         </View>
-      )}
+
       <GoalInput onAddGoal={addGoalHandler} modalVisible={modalVisible} setModalVisible={setModalVisible} />
       <View style={styles.goalsContainer}>
         <FlatList
