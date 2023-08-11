@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   goalItem: {
     margin: 8,
     borderRadius: 6,
-    backgroundColor: "#0b5eed",
+    backgroundColor: "#212121",
     borderColor: '#404040',
   },
   goalText: {
